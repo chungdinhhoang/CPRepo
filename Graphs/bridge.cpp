@@ -26,8 +26,6 @@ int main(){
         int a,b;cin>>a>>b;
         g[a].push_back(b);
         g[b].push_back(a);
-
-        //cout<<a<<b<<endl; 
     }
 
     for (int u=1;u<=n;u++){
