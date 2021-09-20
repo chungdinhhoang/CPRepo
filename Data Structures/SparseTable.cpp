@@ -27,7 +27,7 @@ using namespace std;
 const ll MOD = 1e9 + 7;
 const int N = 5e2+5;
 const int iINF = 1e9+7;
-const double oo = 1e12; 
+const double oo = 1e12;
 
 int n;
 int a[N];
@@ -38,10 +38,12 @@ ll SpT[N][25];
 ll get(int l, int r);
 void sum();
 
-//Sparse Table on Tree  
+//Sparse Table on Tree
+vector<int> g[N];
 int p[N]; // p[i]: parents of node i.
 int d[N]; // d[i]: depth of node i. Calculated by a DFS
 void tree();
+int lca(int u, int v);
 
 int main(){
     //srand(time(0));
@@ -78,7 +80,7 @@ void sum() {
     for (int i=1;i<=n;i++) {
         for (int j = 0; j <= 20 && SpT[i][j] != -1; j++) cout << SpT[i][j] << " ";
         cout << endl;
-    } 
+    }
 
     cout << get(5,5);
 }
@@ -99,11 +101,27 @@ ll get(int l, int r) {
     return res;
 }
 
+void dfs(int u, int pre = -1) {
+    for (int v : g[u]) {
+        if (v == pre) continue;
+
+        d[v] = d[u] + 1;
+        p[v] = u;
+        dfs(v, u);
+    }
+}
+
 void tree() {
     cin >> n;
-    for (int i = 1; i <= n; i++) cin >> p[i];
+    for (int i = 1; i <= n - 1; i++) {
+        int u, v; cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
 
-    p[1] = -1;
+    d[1] = 1; p[1] = -1;
+    dfs(1);
+
     for (int k = 0; k <= 20; k++) {
         for (int i = 1; i <= n; i++) {
             if (k == 0) SpT[i][k] = p[i];
@@ -114,14 +132,44 @@ void tree() {
         }
     }
 
+
+    //Print the table
     for (int i = 1;i <= n; i++) {
         cout << i << ": ";
         for (int j = 0; j <= 20; j++) {
             if (SpT[i][j] == -1) break;
             cout << SpT[i][j] << " ";
-        } 
+        }
         cout << endl;
     }
+    cout << "===============\n";
 
-    //I will implememt LCA soon =))
+    //check LCA function
+    for (int i = 1; i <= n; i++) {
+        for (int j = i + 1; j <= n; j++) {
+            cout << i << " " << j << " : " << lca(i, j) << endl;
+        }
+    }
+}
+
+int lca(int u, int v) {
+    if (u == v) return u;
+
+    if (d[u] > d[v]) swap(u, v);
+
+    for (int i = 20; i >= 0; i--) {
+        int x = SpT[v][i];
+        if (x != -1 && d[x] >= d[u]) v = x;
+    }
+
+    if (u == v) return u;
+
+    for (int i = 20; i >= 0; i--) {
+        if (SpT[u][i] != SpT[v][i]) {
+            u = SpT[u][i];
+            v = SpT[v][i];
+        }
+    }
+
+    return SpT[u][0]; // or p[u];
 }
