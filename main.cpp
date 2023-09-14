@@ -13,18 +13,7 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e18;
 const int iINF = 1e9;
 
-int n;
-ll a[100];
-
-ll get(int i, ll s1, ll s2) {
-    if (i == n) return abs(s1 - s2);
-    return min(get(i + 1, s1 + a[i], s2), get(i + 1, s1, s2 + a[i]));
-}
-
 void solve() {
-    cin >> n;
-    for (int i = 0; i < n; i++) cin >> a[i];
-    cout << get(0, 0, 0);
 }
 
 int main(){
