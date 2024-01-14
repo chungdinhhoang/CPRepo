@@ -1,6 +1,6 @@
 /* 
  * Caution:
- *   *need to cast into and int before printing
+ *   *need to cast into an int before printing
  * source: Benq
 */
 struct modint {
