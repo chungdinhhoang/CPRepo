@@ -29,3 +29,4 @@ modint inv(modint a) {
   assert(a.v != 0);
   return pow(a, MOD - 2);
 }
+modint operator/(modint a, modint b) { return a * inv(b); }
