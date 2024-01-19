@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-const int N = 1e5;
-
 int n, m;
 vector<int> g[N];
 
@@ -32,25 +26,4 @@ void dfs(int u, int pre = -1) {
     }
 
     if (pre == -1 && child >= 2) articulation_point[u] = true;
-}
-
-int main() {
-    #ifdef CHUNGDINH
-    freopen("main.inp", "r", stdin);
-    #endif
-
-    cin >> n >> m;
-    while (m--) {
-        int u, v; cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
-    }
-    memset(tin, 0, sizeof tin);
-
-    for (int i = 1; i <= n; i++) if (!tin[i]) dfs(i);
-
-    int articulation_point_count = 0;
-    for (int i = 1; i <= n; i++) articulation_point_count += (articulation_point[i]);
-
-    cout << articulation_point_count << " " << bridge_count;
 }

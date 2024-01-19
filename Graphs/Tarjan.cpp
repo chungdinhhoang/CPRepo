@@ -1,13 +1,3 @@
-#include <bits/stdc++.h>
-
-#define ii pair<int,int>
-
-using namespace std;
-
-const int N = 3e5;
-
-//SCC: Strong Connected Component
-
 int n,m;
 vector<int> g[N];
 
@@ -17,29 +7,10 @@ int tin[N], low[N];
 int dfsTime=0;
 
 int SCCCount=0;
-
-void dfs(int u);
-
-int main(){
-    freopen("main.inp","r",stdin);
-    memset(tin,0,sizeof tin);
-    memset(onStack,false,sizeof onStack);
-
-    //Find bridges and articulation points
-
-    // initialize the graph
-    cin >> n >> m;
-    while (m--) {
-        int a,b;cin>>a>>b;
-        g[a].push_back(b);
-    }
-
-    for (int u=1;u<=n;u++){
-        if (!tin[u]) dfs(u);
-    }
-
-    cout<<SCCCount;
-}
+/*
+memset(tin,0,sizeof tin);
+memset(onStack,false,sizeof onStack);
+*/
 
 void dfs(int u) {
     onStack[u]=true;st.push(u);

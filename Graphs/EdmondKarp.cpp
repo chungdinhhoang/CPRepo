@@ -1,18 +1,3 @@
-#include <bits/stdc++.h>
-
-#define pb push_back
-#define fi first
-#define se second
-
-#define ii pair<int,int>
-#define ll long long
-
-using namespace std;
-
-const int N = 3e5;
-const ll MOD = 1e9 + 7;
-const int iINF = 1e9;
-
 int n,m,s,t;  
 vector<ii> g[N];
 
@@ -67,25 +52,12 @@ int max_flow(int s, int t){
     return max_flow;
 }
 
-int main(){
-    freopen("main.inp","r",stdin);
-    /* 
-    Remember: 
-    
-    After getting the max flow, the graph had been changed 
-    and cannot be used anymore (Consider make a copy of it.)
+/* 
+Remember: 
 
-    You are using Adjacent List. Loop through all the edges 
-    and adjust it.(Rather than naively using indexes)
-    */
+After getting the max flow, the graph had been changed 
+and cannot be used anymore (Consider make a copy of it.)
 
-    cin>>n>>m;
-    cin>>s>>t;
-
-    while (m--){
-        int a,b,c;cin>>a>>b>>c;
-        add(a,b,c);
-    }
-
-    cout<<max_flow(s,t);
-}
+You are using Adjacent List. Loop through all the edges 
+and adjust it.(Rather than naively using indexes)
+*/

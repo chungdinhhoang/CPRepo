@@ -1,31 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <bitset>
-#include <queue>
-#include <algorithm>
-#include <cstring>
-#include <cmath>
-#include <stack>
-#include <set>
-#include <unordered_map>
-
-using namespace std;
-
-#define endl '\n'
-
-#define pb push_back
-
-#define ll long long
-#define ii pair<int,int>
-#define r first
-#define c second
-#define x first
-#define y second
-
-const int N = 1e6 + 5;
-const int iINF = 1e9;
-const ll INF = 1e18;
-
 struct edge {
     int u, v, cap, flow;
 };
@@ -113,28 +85,3 @@ private:
         return 0;
     }
 };
-
-int n, m, s, t;
-
-void solve() {
-    cin >> n >> m >> s >> t;
-
-    dinic mx(n);
-    
-    for (int i = 1; i <= m; i++) {
-        int a, b, c; cin >> a >> b >> c;
-        mx.add(a, b, c);
-    }
-
-    cout << mx.maxflow(s, t);
-}
-
-int main() {
-    #ifndef ONLINE_JUDGE
-    freopen("main.inp","r",stdin);
-    #endif
-
-    int t = 1;
-    //cin >> t;
-    while (t--) solve();
-}
