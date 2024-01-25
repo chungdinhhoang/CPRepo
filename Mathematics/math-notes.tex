@@ -1,3 +1,35 @@
-Number of divisors of n \le \sqrt[3]{n}. 
+\documentclass{article}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\title{}
+\onehalfspacing
+\begin{document}
 
-\sum_{i=1}^{n}{i^2} = \frac{n(n+1)(2n+1)}{6}
+Number of divisors of $n \le \sqrt[3]{n}$. 
+
+$\sum_{i=1}^{n}{i}=\frac{n(n+1)}{2}$ ;
+$\sum_{i=1}^{n}{i^2} = \frac{n(n+1)(2n+1)}{6}$ ;
+$\sum_{i=1}^{n}{i^3} = \frac{n^2(n+1)^2}{4}$
+
+Geometric Progression: $1 + a + a^2 + \cdots + a^n = \frac{a^{n + 1} - 1}{a - 1}$
+
+Euler's totient function: 
+$$\phi(n) = n \cdot (1 - \frac{1}{p_1}) \cdot (1 - \frac{1}{p_2}) \cdot \cdots \cdot (1 - \frac{1}{p_k})$$
+
+$$\sum_{d|n}{\phi(n) = n}$$
+
+\noindent\textbf{Fibonacci Numbers}
+
+$F_{-i}=(-1)^{i-1}F_i$;
+$GCD(F_m,F_n) = F_{GCD(m,n)}$
+
+Cassini's identity: for $i > 0: F_{i+1}F_{i-1}-F_i^2=(-1)^i$
+
+Additive rules:
+
+\begin{center}
+	$F_{n+k}=F_{k}F_{n+1} + F_{k-1}F_{n}$ ;
+	$F_{2n}=F_{n}F_{n+1}+F_{n-1}F_{n}$
+\end{center}
+
+\end{document}
