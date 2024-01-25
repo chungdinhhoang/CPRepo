@@ -44,7 +44,7 @@ struct segTree {
   }
   T query(int u, int v, int id = 1, int l = 1, int r = SZ) {
     if(v < l || r < u) {
-      return INF;
+      return default_value;
     }
     if(u <= l && r <= v) {
       return st[id];
