@@ -15,8 +15,8 @@ struct lazySegTree {
   vector<T> st, lazy;
   lazySegTree() {
     T default_value = 0;
-    st.assign(4 * n, default_value);
-    lazy.assign(4 * n, default_value);
+    st.assign(4 * SZ, default_value);
+    lazy.assign(4 * SZ, default_value);
   }  
   void build(const vector<T> &a, int id = 1, int l = 1, int r = SZ) {
     lazy[id] = 0;
