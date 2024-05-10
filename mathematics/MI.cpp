@@ -22,6 +22,21 @@ ll fpow(ll a, ll b){
 }
 ll inv(ll a) {return fpow(a,MOD-2);}
 
+// Euler's totient function. Source: cp-algorithms.com
+vector<ll> phi_1_to_n(int n) {
+    vector<ll> phi(n + 1);
+    for (int i = 0; i <= n; i++)
+        phi[i] = i;
+
+    for (int i = 2; i <= n; i++) {
+        if (phi[i] == i) {
+            for (int j = i; j <= n; j += i)
+                phi[j] -= phi[j] / i;
+        }
+    }
+    return phi;
+}
+
 int main(){
     //freopen("main.inp","r",stdin);
 
