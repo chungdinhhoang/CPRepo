@@ -1,8 +1,7 @@
 vector<Mint> fact(1, 1);
 vector<Mint> inv_fact(1, 1);
  
-template<int M, typename U>
-modnum<M> power(const modnum<M>& a, const U& b) {
+Mint power(const Mint a, const int b) {
   assert(b >= 0);
   modnum<M> x = a, res = 1;
   U p = b;
