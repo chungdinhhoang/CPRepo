@@ -3,7 +3,7 @@ vector<Mint> inv_fact(1, 1);
  
 Mint power(const Mint a, const int b) {
   assert(b >= 0);
-  modnum<M> x = a, res = 1;
+  Mint x = a, res = 1;
   U p = b;
   while (p > 0) {
     if (p & 1) res *= x;
