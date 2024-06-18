@@ -1,7 +1,7 @@
 // lazy propagation with one-based indexing
 //
 // build:
-//    lazySegtree<int, N> seg; // N is constant
+//    lazySegtree<int> seg;
 //    seg.build(a); // vector `a` must be one-indexed
 // 
 // update:
@@ -10,15 +10,19 @@
 // query:
 //    seg.query(l, r)
 
-template <class T, int SZ>
+template <class T>
 struct lazySegTree {
   vector<T> st, lazy;
-  lazySegTree() {
+  int n;
+  lazySegTree(int _n) : n(_n) {
     T default_value = 0;
-    st.assign(4 * SZ, default_value);
-    lazy.assign(4 * SZ, default_value);
+    st.assign(4 * n, default_value);
+    lazy.assign(4 * n, default_value);
   }  
-  void build(const vector<T> &a, int id = 1, int l = 1, int r = SZ) {
+  void build(const vector<T> &a) {
+    build(a, 1, 1, n);
+  }
+  void build(const vector<T> &a, int id, int l, int r) {
     lazy[id] = 0;
     if(l == r) {
       if(l < a.size()) {
@@ -40,7 +44,10 @@ struct lazySegTree {
     lazy[id * 2 | 1] += lazy[id];
     lazy[id] = 0;
   }
-  void update(int u, int v, T val, int id = 1, int l = 1, int r = SZ) {
+  void update(int u, int v, T val) {
+    update(u, v, val, 1, 1, n);
+  }
+  void update(int u, int v, T val, int id, int l, int r) {
     if(v < l || r < u) return;
     if(u <= l && r <= v) {
       lazy[id] += val;
@@ -53,7 +60,10 @@ struct lazySegTree {
     update(u, v, val, id * 2 | 1, mid + 1, r);
     st[id] = max(st[id * 2], st[id * 2 | 1]);
   }
-  T query(int u, int v, int id = 1, int l = 1, int r = SZ) {
+  T query(int u, int v) {
+    return query(u, v, 1, 1, n);
+  }
+  T query(int u, int v, int id, int l, int r) {
     if(v < l || r < u) {
       return -INF;
     }
@@ -65,3 +75,4 @@ struct lazySegTree {
     return max(query(u, v, id * 2, l, mid), query(u, v, id * 2 | 1, mid + 1, r));
   }
 };
+
