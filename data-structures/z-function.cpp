@@ -1,4 +1,3 @@
-
 vector<int> z_function(const string& s) {
   int n = (int) s.size();
   vector<int> z(n);
