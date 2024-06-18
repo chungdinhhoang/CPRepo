@@ -1,3 +1,7 @@
+/* 
+  one-based index zfunction (string's index starts from 1)
+*/
+
 vector<int> z_function(const string& s) {
   int n = (int) s.size();
   vector<int> z(n);
