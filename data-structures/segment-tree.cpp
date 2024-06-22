@@ -22,11 +22,8 @@ struct segTree {
     build(a, 1, 1, n);
   }
   void build(const vector<T>& a, int id, int l, int r) {
-    r = min(n, (int) a.size() + 5);
     if(l == r) {
-      if(l < a.size()) {
-        st[id] = a[l];
-      }
+      st[id] = a[l];
       return;
     }
     int mid = (l + r) >> 1;
