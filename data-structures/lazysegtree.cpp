@@ -1,7 +1,7 @@
 // lazy propagation with one-based indexing
 //
 // build:
-//    lazySegtree<int> seg;
+//    lazySegtree<int> seg(n); // vector<int> a(n + 1)
 //    seg.build(a); // vector `a` must be one-indexed
 // 
 // update:
