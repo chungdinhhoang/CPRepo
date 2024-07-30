@@ -1,7 +1,7 @@
 // segtree with one-based indexing
 //
 // build:
-//    segtree<int> seg;
+//    segtree<int> seg(n); // vector<int> a(n + 1);
 //    seg.build(a); // vector `a` must be one-indexed
 // 
 // update:
