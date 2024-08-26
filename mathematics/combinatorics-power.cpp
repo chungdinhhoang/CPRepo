@@ -12,7 +12,8 @@ Mint power(const Mint a, const int b) {
   }
   return res;
 }
- 
+
+/*
 Mint C(int n, int k) {
   if (k < 0 || k > n) {
     return 0;
@@ -27,4 +28,17 @@ Mint C(int n, int k) {
     ret *= n - i + 1;
   }
   return ret;
+}
+*/
+
+Mint C(int n, int k) {
+  if (k < 0 || k > n) {
+    return 0;
+  }
+  k = min(k, n - k);
+  while ((int) fact.size() < n + 1) {
+    fact.push_back(fact.back() * (int) fact.size());
+    inv_fact.push_back(1 / fact.back());
+  }
+  return fact[n] * inv_fact[k] * inv_fact[n - k];
 }
