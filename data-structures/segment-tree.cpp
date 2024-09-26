@@ -16,7 +16,7 @@ struct segTree {
   int n;
   segTree(int _n) : n(_n) {
     T default_value = 0;
-    st.assign(4 * n, default_value);
+    st.assign(4 * n + 5, default_value);
   }
   void build(const vector<T> &a) {
     build(a, 1, 1, n);
