@@ -1,6 +1,6 @@
-const ll MOD = 1e9 + 7;
-ll mul(ll a, ll b){return (a%MOD)*(b%MOD)%MOD;}
-ll add(ll a, ll b){return ((a+MOD)%MOD + (b+MOD)%MOD)%MOD;}
+ll mul(ll a, ll b){ a *= b; if (a > MOD) a %= MOD; return a;}
+ll add(ll a, ll b){ a += b; if (a >= MOD) a -= MOD; return a;}
+ll sub(ll a, ll b){ a -= b; if (a < 0) a += MOD; return a;}
 ll fpow(ll a, ll b){
     ll res=1;
     while (b){
